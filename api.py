@@ -199,6 +199,10 @@ class TruePeopleSearchAPI:
             options = Options()
             if chrome_headless:
                 options.add_argument('--headless=new')
+                options.add_argument('--disable-dev-shm-usage')
+                options.add_argument('--no-sandbox')
+                options.add_argument('--disable-gpu')
+                options.add_argument('--remote-debugging-port=9222')
             
             # Basic options for stability
             options.add_argument('--no-sandbox')
@@ -221,7 +225,12 @@ class TruePeopleSearchAPI:
                 print("No proxy configured. TruePeopleSearch may block non-US IPs.")
             
             # Initialize driver with retry logic
-            service = Service(ChromeDriverManager().install())
+            try:
+                service = Service(ChromeDriverManager(cache_valid_range=1).install())
+            except Exception as e:
+                print(f"Error installing ChromeDriver: {str(e)}")
+                raise
+
             max_retries = 3
             for attempt in range(max_retries):
                 try:
