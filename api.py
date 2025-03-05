@@ -31,13 +31,13 @@ CORS(app)  # Enable CORS for all routes
 # Global API instance
 api_instance = None
 
-@app.before_first_request
-def initialize_api():
-    """Initialize the API instance before the first request."""
+def create_app():
+    """Create and configure the Flask app."""
     global api_instance
     if api_instance is None:
         api_instance = TruePeopleSearchAPI()
         print("API instance initialized")
+    return app
 
 @app.route('/search', methods=['POST'])
 def search():

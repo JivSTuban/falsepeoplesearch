@@ -137,7 +137,7 @@ The server will start on http://localhost:5000
    - **Name**: truepeoplesearch-api (or your preferred name)
    - **Environment**: Python 3
    - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `gunicorn api:app`
+   - **Start Command**: `gunicorn "api:app"`
 
 4. Add the following environment variables:
    - `CHROME_HEADLESS`: true
