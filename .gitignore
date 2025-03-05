@@ -7,10 +7,19 @@ __pycache__/
 dist/
 build/
 venv/
+*.pyc
 
-# OS generated
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+
+# OS generated files
 .DS_Store
 .DS_Store?
+._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
@@ -27,3 +36,10 @@ Thumbs.db
 .env
 *.log
 *.xlsx
+
+# Local development
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
