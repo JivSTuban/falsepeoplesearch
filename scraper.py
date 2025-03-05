@@ -146,9 +146,13 @@ class TruePeopleSearchScraper:
                 service = Service(executable_path=chromedriver_path)
                 print(f"Using local ChromeDriver directly for Apple Silicon Mac")
             else:
-                service = Service(ChromeDriverManager().install())
+                # Initialize driver with retry logic
+                try:
+                    service = Service(ChromeDriverManager().install())
+                except Exception as e:
+                    print(f"Error installing ChromeDriver: {str(e)}")
+                    raise
             
-            # Initialize driver with retry logic
             max_retries = 3
             for attempt in range(max_retries):
                 try:

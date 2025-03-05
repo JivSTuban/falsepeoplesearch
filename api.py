@@ -226,7 +226,7 @@ class TruePeopleSearchAPI:
             
             # Initialize driver with retry logic
             try:
-                service = Service(ChromeDriverManager(cache_valid_range=1).install())
+                service = Service(ChromeDriverManager().install())
             except Exception as e:
                 print(f"Error installing ChromeDriver: {str(e)}")
                 raise
